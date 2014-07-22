@@ -69,8 +69,9 @@
         <form action="main.jsp" method="POST" style="margin-left:30px;maring-top:50px">
         Log in <br/>
         Email:<input name="email" type="email" id="id_email" placeholder="Enter your email"/><br/>
-        Password:<input name="password" type="password" id="id_password" placeholder="Enter your email"/><br/>
+        Password:<input name="password" type="password" id="id_password" placeholder="Enter your password"/><br/>
         <input type="submit" value="Submit" />
+        <br/><a href="register.jsp">Register</a>
         </form>
     </div>
     <div class="gwd-div-0ig7 editable editable editable"><span class="gwd-span-hl80">Medical curator</span>

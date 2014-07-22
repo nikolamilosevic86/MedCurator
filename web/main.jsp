@@ -25,6 +25,15 @@
 <%@ page import ="Helpers.Weight" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    String logout =  request.getParameter("logout");
+    if(logout!=null && logout.equals("true"))
+    {
+        session.setAttribute("isLoggedIn", null);
+        session.setAttribute("email", null);
+        session.setAttribute("affiliation", null);
+        session.setAttribute("role", null);
+    }
+    
     String dbAddress = "jdbc:mysql://localhost:3306/";
     String dbName = "TiralExtraction";
     String userName = "root";
@@ -66,7 +75,9 @@
     </head>
     <body>
         <div id ="topdiv">
-
+            <div class="logout_div">
+            <a href="?logout=true" id="link_logout">Logout</a>
+            </div>
         </div>
         <div id="leftmenu">
             <ul>
