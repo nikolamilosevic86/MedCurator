@@ -1,0 +1,74 @@
+body,html{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    height: 100%;
+}
+
+div{
+    float: left;
+}
+#topdiv{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    height: 10%;
+    width: 100%;
+    background: lightblue;
+}
+
+#leftmenu{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    height: 90%;
+    width: 15%;
+    overflow: auto;
+    background: lightblue;
+}
+
+#main{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: lightgoldenrodyellow;
+    overflow: auto;
+    width: 40%;
+    height: 90%;
+}
+
+#document{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: lightcyan;
+    overflow: scroll;
+    width: 45%;
+    height: 90%;
+}
+#dropdownMenu1{
+    width: 140px;
+    background: cornflowerblue;
+    color: #ffffff;
+    font-size: large;
+}
+
+#setting-menu{
+    float: right;
+    margin-right: 100px;
+    margin-top: 5px;
+    width: 100px;
+}
+
+#quote-menu{
+    margin-top: 20px;
+    width: 100%;
+
+}
+
+#new-quote,#my-quotes,#liked-quotes,#browse-quotes
+{
+    background: hotpink;
+    color: #ffffff;
+    font-size: large;
+}
+
+#new-quote-page,#my-quotes-page,#liked-quotes-page{
+    display:none;
+
+}
