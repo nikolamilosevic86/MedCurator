@@ -23,6 +23,11 @@ div{
     overflow: auto;
     background: lightblue;
 }
+.logout_div{
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+}
 
 #main{
     margin: 0px 0px 0px 0px;
