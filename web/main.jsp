@@ -86,11 +86,6 @@
 
                 <% }
                 %>
-
-
-
-
-
             </ul>
         </div>
         <%
@@ -200,9 +195,7 @@
             }
         %>
         <div id="document">
-
             <%=tables%>
-
         </div>
 
     </body>
