@@ -23,6 +23,16 @@ div{
     overflow: auto;
     background: lightblue;
 }
+.title_div{
+    float: left;
+
+}
+.title
+{
+    margin-left: 20px;
+    margin-top: 5px;
+    color: blue;
+}
 .logout_div{
     float: right;
     margin-top: 15px;

@@ -18,7 +18,7 @@ public class ClinicalArm {
     private int NoPatients;
     private int NoMale;
     private int NoFemale;
-    public LinkedList<Weight> weights = new LinkedList<Weight>();
+    public LinkedList<ArmProperty> properties = new LinkedList<ArmProperty>();
     
     public String getArmName() {
         return ArmName;

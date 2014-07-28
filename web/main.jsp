@@ -3,6 +3,7 @@
     Created on : Jul 18, 2014, 4:34:29 PM
     Author     : nikola
 --%>
+<%@page import="Helpers.ArmProperty"%>
 <%@page import="javax.xml.transform.stream.StreamResult"%>
 <%@page import="javax.xml.transform.dom.DOMSource"%>
 <%@page import="javax.xml.transform.Transformer"%>
@@ -75,6 +76,9 @@
     </head>
     <body>
         <div id ="topdiv">
+            <div class="title_div">
+                <h2 class="title">Medical curator</h2>
+            </div>
             <div class="logout_div">
             <a href="?logout=true" id="link_logout">Logout</a>
             </div>
@@ -107,6 +111,8 @@
             String LongAbstract = "";
             String URL = "";
             String XML = "";
+            String PISSN = "";
+            String EISSN = "";
 
             if (docid != null && !docid.equals("")) {
                 Class.forName(jdbcDriver);
@@ -117,12 +123,14 @@
                 rs = preparedStatement.executeQuery();
                 while (rs.next()) {
                     PMC = rs.getString(2);
-                    Title = rs.getString(3);
-                    Authors = rs.getString(4);
-                    Abstract = rs.getString(5);
-                    LongAbstract = rs.getString(6);
-                    URL = rs.getString(7);
-                    XML = rs.getString(8);
+                    PISSN = rs.getString(3);
+                    EISSN = rs.getString(4);
+                    Title = rs.getString(5);
+                    Authors = rs.getString(6);
+                    Abstract = rs.getString(7);
+                    LongAbstract = rs.getString(8);
+                    URL = rs.getString(9);
+                    XML = rs.getString(10);
 
                 }
             }
@@ -135,19 +143,20 @@
                 ClinicalArm ca = new ClinicalArm();
                 int arm_id = rs.getInt(1);
                 ca.setArmName(rs.getString(2));
-                ca.setNoPatients(rs.getInt(3));
-                ca.setNoMale(rs.getInt(4));
-                ca.setNoFemale(rs.getInt(5));
-                String query2 = "SELECT * FROM WeightDetails  WHERE ArmID=?";
+//                ca.setNoPatients(rs.getInt(3));
+//                ca.setNoMale(rs.getInt(4));
+//                ca.setNoFemale(rs.getInt(5));
+                String query2 = "SELECT * FROM ArmProperty  WHERE ArmID=?";
                 PreparedStatement preparedStatement2 = con.prepareStatement(query2);
                 preparedStatement2.setString(1, arm_id + "");
                 ResultSet rs2 = preparedStatement2.executeQuery();
                 while (rs2.next()) {
-                    Weight w = new Weight();
-                    w.setWeightCategory(rs2.getString(3));
-                    w.setWeightValue(rs2.getString(4));
-                    w.setWeightUnit(rs2.getString(5));
-                    ca.weights.add(w);
+                    ArmProperty w = new ArmProperty();
+                    w.setPropertyName(rs2.getString(3));
+                    w.setType(rs2.getString(4));
+                    w.setValue(rs2.getString(5));
+                     w.setValueUnit(rs2.getString(6));
+                    ca.properties.add(w);
                 }
 
                 arms.add(ca);
@@ -159,9 +168,11 @@
                 <li><b>DocID:</b> <%=docid%></li>
                 <li><b>Title:</b> <%=Title%></li>
                 <li><b>Authors:</b> <%=Authors%></li>
+                <li><b>P-ISSN:</b> <%=PISSN%></li>
+               <!-- <li><b>E-ISSN:</b> <%=EISSN%></li>-->
                 <li><b>PMC:</b> PMC<%=PMC%></li>
-                <li><b>Abstract:</b> <%=Abstract%></li>
-                <li><b>Long Abstract:</b> <%=LongAbstract%></li>
+               <!-- <li><b>Abstract:</b> <%=Abstract%></li>-->
+              <!--  <li><b>Long Abstract:</b> <%=LongAbstract%></li>-->
                 <li><b>URL:</b> <a href="<%=URL%>" target="_blank"><%=URL%></a></li>
                 <li><b>Clinical arms:</b></li>
                 <ul>
@@ -169,13 +180,10 @@
                     %>
                     <li><%=arms.get(i).getArmName()%></li>
                     <ul>
-                        <li><b>Patients:</b> <%=arms.get(i).getNoPatients()%></li>
-                        <li><b>Number of Male:</b> <%=arms.get(i).getNoMale()%></li>
-                        <li><b>Number of Female:</b> <%=arms.get(i).getNoFemale()%></li>
-                            <% for (int j = 0; j < arms.get(i).weights.size(); j++) {
+                            <% for (int j = 0; j < arms.get(i).properties.size(); j++) {
                             %>
-                        <li><b><%=arms.get(i).weights.get(j).getWeightCategory()%>:</b>
-                            <%=arms.get(i).weights.get(j).getWeightValue()%>  <%=arms.get(i).weights.get(j).getWeightUnit()%>
+                        <li><b><%=arms.get(i).properties.get(j).getPropertyName()%>:</b>
+                            <%=arms.get(i).properties.get(j).getValue()%>  <%=arms.get(i).properties.get(j).getValueUnit()%>
                         </li>
                         <%
                              }%>
