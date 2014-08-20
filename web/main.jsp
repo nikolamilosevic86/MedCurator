@@ -73,6 +73,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Medical curator - main</title>
         <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/mainscript.js"></script>
     </head>
     <body>
         <div id ="topdiv">
@@ -143,6 +145,7 @@
                 ClinicalArm ca = new ClinicalArm();
                 int arm_id = rs.getInt(1);
                 ca.setArmName(rs.getString(2));
+                ca.setArmID(arm_id);
 //                ca.setNoPatients(rs.getInt(3));
 //                ca.setNoMale(rs.getInt(4));
 //                ca.setNoFemale(rs.getInt(5));
@@ -152,10 +155,12 @@
                 ResultSet rs2 = preparedStatement2.executeQuery();
                 while (rs2.next()) {
                     ArmProperty w = new ArmProperty();
+                    w.setArmPropertyID(rs2.getInt(1));
                     w.setPropertyName(rs2.getString(3));
                     w.setType(rs2.getString(4));
                     w.setValue(rs2.getString(5));
-                     w.setValueUnit(rs2.getString(6));
+                    w.setAdditionalInfo(rs2.getString(6));
+                     w.setValueUnit(rs2.getString(7));
                     ca.properties.add(w);
                 }
 
@@ -178,18 +183,21 @@
                 <ul>
                     <% for (int i = 0; i < arms.size(); i++) {
                     %>
-                    <li><%=arms.get(i).getArmName()%></li>
+                    <li class="arm" id="<%=arms.get(i).getArmID() %>"><%=arms.get(i).getArmName()%></li>
                     <ul>
                             <% for (int j = 0; j < arms.get(i).properties.size(); j++) {
                             %>
-                        <li><b><%=arms.get(i).properties.get(j).getPropertyName()%>:</b>
-                            <%=arms.get(i).properties.get(j).getValue()%>  <%=arms.get(i).properties.get(j).getValueUnit()%>
+                            <li><div class="arm_property" id="<%=arms.get(i).properties.get(j).getArmPropertyID()%>"><b><div id="property_name"><%=arms.get(i).properties.get(j).getPropertyName()%></div></b><div id="column">:</div>
+                                    <div id="property_val"><%=arms.get(i).properties.get(j).getValue()%></div>  <div id="property_unit"><%=arms.get(i).properties.get(j).getValueUnit()%></div>, <!--<%=arms.get(i).properties.get(j).getAdditionalInfo()%> --></div>
                         </li>
                         <%
                              }%>
+                             <button class="new_property" value="New property">New Property</button>
                     </ul>
                     <%
                         }%>
+                    <button class="new_arm" value="New Arm">New Arm</button>
+                   
                 </ul>
             </ul>
 

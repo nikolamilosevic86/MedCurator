@@ -13,6 +13,15 @@ package Helpers;
 public class ArmProperty {
     //ArmID,PropertyName,  Type,Value,AdditionalInfo,ValueUnit
     int ArmID;
+    int ArmPropertyID;
+
+    public int getArmPropertyID() {
+        return ArmPropertyID;
+    }
+
+    public void setArmPropertyID(int ArmPropertyID) {
+        this.ArmPropertyID = ArmPropertyID;
+    }
     String PropertyName,Type,Value,AdditionalInfo,ValueUnit;
 
     public int getArmID() {

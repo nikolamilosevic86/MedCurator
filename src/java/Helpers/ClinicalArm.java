@@ -18,6 +18,15 @@ public class ClinicalArm {
     private int NoPatients;
     private int NoMale;
     private int NoFemale;
+    private int ArmID;
+
+    public int getArmID() {
+        return ArmID;
+    }
+
+    public void setArmID(int ArmID) {
+        this.ArmID = ArmID;
+    }
     public LinkedList<ArmProperty> properties = new LinkedList<ArmProperty>();
     
     public String getArmName() {
