@@ -180,11 +180,11 @@
               <!--  <li><b>Long Abstract:</b> <%=LongAbstract%></li>-->
                 <li><b>URL:</b> <a href="<%=URL%>" target="_blank"><%=URL%></a></li>
                 <li><b>Clinical arms:</b></li>
-                <ul>
+                <ul document_id="<%=docid%>">
                     <% for (int i = 0; i < arms.size(); i++) {
                     %>
-                    <li class="arm" id="<%=arms.get(i).getArmID() %>"><%=arms.get(i).getArmName()%></li>
-                    <ul>
+                    <li class="arm" document_id="<%=docid%>" id="<%=arms.get(i).getArmID() %>"><%=arms.get(i).getArmName()%></li>
+                    <ul id="<%=arms.get(i).getArmID() %>">
                             <% for (int j = 0; j < arms.get(i).properties.size(); j++) {
                             %>
                             <li><div class="arm_property" id="<%=arms.get(i).properties.get(j).getArmPropertyID()%>"><b><div id="property_name"><%=arms.get(i).properties.get(j).getPropertyName()%></div></b><div id="column">:</div>
