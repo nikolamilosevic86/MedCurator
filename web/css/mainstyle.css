@@ -8,7 +8,10 @@ div{
     float: left;
 }
 
+li{
+    margin:0px auto;
 
+}
 
 #topdiv{
     margin: 0px 0px 0px 0px;

@@ -187,7 +187,7 @@
                     <ul id="<%=arms.get(i).getArmID() %>">
                             <% for (int j = 0; j < arms.get(i).properties.size(); j++) {
                             %>
-                            <li><div class="arm_property" id="<%=arms.get(i).properties.get(j).getArmPropertyID()%>"><b><div id="property_name"><%=arms.get(i).properties.get(j).getPropertyName()%></div></b><div id="column">:</div>
+                            <li><div class="arm_property" style="float: inherit;" id="<%=arms.get(i).properties.get(j).getArmPropertyID()%>"><b><div id="property_name"><%=arms.get(i).properties.get(j).getPropertyName()%></div></b><div id="column">:</div>
                                     <div id="property_val"><%=arms.get(i).properties.get(j).getValue()%></div>  <div id="property_unit"><%=arms.get(i).properties.get(j).getValueUnit()%></div>, <!--<%=arms.get(i).properties.get(j).getAdditionalInfo()%> --></div>
                         </li>
                         <%
